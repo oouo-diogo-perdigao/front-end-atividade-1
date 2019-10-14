@@ -1,52 +1,52 @@
 <!doctype html>
-<html class="no-js" lang="">
-
+<html lang="pt-br">
 <head>
+	<title>Projeto Front-end Atividade 1 - Jogo da Velha</title>
 	<meta charset="utf-8">
-	<title>Projeto Front-end - Atividade 1</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<link rel="icon" href="./favicon.ico">
 	<link rel="manifest" href="site.webmanifest">
+	
 	<link rel="apple-touch-icon" href="icon.png">
-	<!-- Place favicon.ico in the root directory -->
-
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/main.css">
+	
+	<script src="js/vendor/modernizr-3.7.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="js/vendor/jquery-3.4.1.min.js"></script>
+	<script src="js/plugins.js"></script>
 
-	<meta name="theme-color" content="#fafafa">
+	<script src="js/table.js"></script>
+	<script src="js/main.js"></script>
 </head>
-
 <body>
 	<header>
-		<h1 class="app-title">Título da sua página ou webapp</h1>
-		<nav>Menu de navegação principal</nav>
+		<h1 class="app-title">Jogo da Velha cheio de tecnologias</h1>
+		<nav class="main-menu">
+			<ul>
+				<li class="current"><a href="./index.html">Jogo</a></li>
+				<li><a href="./sobre.html">Sobre</a></li>
+				<!-- <li><a href="./contato.html">Contato</a></li> -->
+			</ul>
+		</nav>
 	</header>
 	<main>
 		<section class="main-feature">
-			Seu conteúdo ou feature principal vem aqui
+			<canvas id="myCanvas"></canvas>
 		</section>
-		<aside class="secundary-feature">
-			Algum conteúdo ou feature não-principal de apoio
-		</aside>
+		<section class="secundary-feature">
+			Habilitar IA <input type="checkbox" id="IA"><br/>
+			<aside>
+				<div>Servidor: <span id="servidor"></span></div>
+			</aside>
+		</section>
 	</main>
 	<footer>
-		Informações gerais, recursos secundários de apoio, nome do autor.
+		Jogo da velha com IA <!--  perfeita - Pode tentar mais não vai ganhar = D --> <br/>
+		Criado por <a href="https://github.com/oouo">Diogo Perdigão</a> projeto disponivel no <a href="https://github.com/oouo/front-end-atividade-1">Git</a>
 	</footer>
 
 
-	<script src="js/vendor/modernizr-3.7.1.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
-	<script src="js/plugins.js"></script>
-	<script src="js/main.js"></script>
-
-	<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-	<script>
-		window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-		ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-	</script>
-	<script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
 </html>
