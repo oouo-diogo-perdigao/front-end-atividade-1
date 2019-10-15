@@ -24,7 +24,7 @@ var ClassTable = function(canvasId, width, height){
 	var jogador;
 	var IA = false;
 	self.togleIA = function(enable){
-		IA=enable;
+		IA = enable;
 	}
 	/**
 	 * zera o tabuleiro
@@ -41,9 +41,9 @@ var ClassTable = function(canvasId, width, height){
 		movies = 9;
 		showTable();
 	}
-	var printMatriz = function(matriz){
+	var printMatriz = function(matriz) {
 		for (var i = 0; i < 3; i++) {
-			console.log(matriz[i][0]+" "+matriz[i][1]+" "+matriz[i][2]);
+			console.log(matriz[i][0]+" "+matriz[i][1]+" "+matriz[i][2]+"       "+i);
 		}
 	};
 	/**
@@ -51,7 +51,7 @@ var ClassTable = function(canvasId, width, height){
 	 * @param {boolean} x linha 
 	 * @param {boolean} y coluna
 	 */
-	var play = function(x, y){
+	var play = function(x, y) {
 		if (movies) {
 			//Movimento valido
 			if (table[x][y] == 0) {
@@ -62,7 +62,7 @@ var ClassTable = function(canvasId, width, height){
 				return;
 			}
 			movies--;
-	
+			
 			//Verificação de vitoria
 			if (movies <= 4 ) {
 				var victory = wins();
@@ -71,12 +71,13 @@ var ClassTable = function(canvasId, width, height){
 					movies = 0;
 					drawLine(victory.ini, victory.end);
 					drawVictory(victory.winner);
+					return;
 				}
 			}
 			jogador = -jogador;
 			//Jogadas do jogador completas
 			
-	
+			
 			//Jogadas da Ia, se habilitada, só joga com bola
 			if (IA) {
 				var play = IAMiniMaxPoda(false);
@@ -117,7 +118,7 @@ var ClassTable = function(canvasId, width, height){
 			[0, 0, 0],
 			[0, 0, 0]
 		);
-
+		
 		for (var i = 0; i < 3; i++) {
 			for (var j = 0; j < 3; j++) {
 				jogadas [i][j] = table[i][j];
@@ -128,25 +129,40 @@ var ClassTable = function(canvasId, width, height){
 			for (var j = 0; j < 3; j++) {
 				if (jogadas[i][j] == 0) {
 					jogadas[i][j] = turnXis?1:-1;
-					printMatriz(jogadas);
-					calculo[i][j] = fitness(jogadas);
-					console.warn(calculo[i][j]);
+					//printMatriz(jogadas);
+					calculo[i][j] = -fitness(jogadas);
+					//console.warn(calculo[i][j]);
 					jogadas[i][j] = 0;
+				}
+				else{
+					calculo[i][j] = turnXis?-99999:99999;
 				}
 			}
 		}
-		console.warn(calculo);
+		printMatriz(calculo);
 		var retorno = new Array(0,0);
 		for (var i = 0; i < 3; i++) {
 			for (var j = 0; j < 3; j++) {
 				if (turnXis) {
-					if ( calculo[i][j] > calculo[retorno[0]][retorno[1]] ) {
+					if ( calculo[i][j] == calculo[retorno[0]][retorno[1]] ) {
+						if (Math.random() > 0.3) {
+							retorno[0] = i;
+							retorno[1] = j;
+						}
+					}
+					else if ( calculo[i][j] > calculo[retorno[0]][retorno[1]] ) {
 						retorno[0] = i;
 						retorno[1] = j;
 					}
 				}
 				else{
-					if ( calculo[i][j] < calculo[retorno[0]][retorno[1]] ) {
+					if ( calculo[i][j] == calculo[retorno[0]][retorno[1]] ) {
+						if (Math.random() > 0.3) {
+							retorno[0] = i;
+							retorno[1] = j;
+						}
+					}
+					else if ( calculo[i][j] < calculo[retorno[0]][retorno[1]] ) {
 						retorno[0] = i;
 						retorno[1] = j;
 					}
@@ -252,6 +268,12 @@ var ClassTable = function(canvasId, width, height){
 			else if (table[0][2]==play && table[1][2]==play && table[2][2]==play){ ret.winner = play; ret.ini[0]=0;ret.ini[1]=2;ret.end[0]=2;ret.end[1]=2; console.log(6); }
 			else if (table[0][0]==play && table[1][1]==play && table[2][2]==play){ ret.winner = play; ret.ini[0]=0;ret.ini[1]=0;ret.end[0]=2;ret.end[1]=2; console.log(7); }
 			else if (table[0][2]==play && table[1][1]==play && table[2][0]==play){ ret.winner = play; ret.ini[0]=0;ret.ini[1]=2;ret.end[0]=2;ret.end[1]=0; console.log(8); }
+		}
+		if (ret.winner) {
+			if ('vibrate' in navigator) {
+				// shake it up, baby
+				navigator.vibrate([200, 250, 300]);
+			}
 		}
 		return ret;
 	};
@@ -386,6 +408,7 @@ var ClassTable = function(canvasId, width, height){
 		$("#"+canvasId).attr("height", height);
 		cWidth = width;
 		cHeight = height;
+		
 		canvas = document.getElementById(canvasId);
 		ctx = canvas.getContext("2d");
 		self.reset();

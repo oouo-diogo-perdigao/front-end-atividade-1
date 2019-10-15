@@ -25,12 +25,19 @@ body > main {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding: 0px 20px;
+  padding: 0px;
+}
+
+@media (min-width: 770px) {
+  body > main {
+    padding: 0px 20px;
+  }
 }
 
 body > footer {
   text-align: center;
-  height: 50px;
+  min-height: 50px;
+  height: auto;
   background-color: #031b4d;
   color: #d5d5d5;
 }

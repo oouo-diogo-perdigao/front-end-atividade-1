@@ -11,7 +11,7 @@ if("geolocation" in navigator){
 			if (p.coords.accuracy <= 500) {
 				add += " - " + request.response["address"]["suburb"];
 			}
-			$("#servidor").html(add);
+			$("#servidor").append(add);
 		};
 		request.addEventListener("error", function(e) { console.log(e); });
 		request.responseType = 'json';
@@ -23,7 +23,10 @@ if("geolocation" in navigator){
 //Utilizando uma API de canvas para se criar um jogo da velha, com uma IA inclusa para nao se jogar sozinho
 var classTable;
 $(document).ready(function() {
-	classTable = new ClassTable("myCanvas", 400, 400);
+	var width = $("body").width()>400?400:$("body").width();
+	var height = $("body").height()>400?400:$("body").height();
+	classTable = new ClassTable("myCanvas", width, height);
+	//$("#servidor").append(width+" "+height);
 	$("#IA").click(function(){
 		classTable.togleIA($(this).is(":checked"));
 	});
