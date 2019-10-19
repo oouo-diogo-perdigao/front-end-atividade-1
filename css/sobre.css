@@ -1,4 +1,11 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  margin: 0;
+  padding: 0;
   width: 100vw;
   min-height: 100vh;
   font-family: sans-serif;
@@ -13,7 +20,7 @@ body {
           flex-direction: column;
 }
 
-body > header {
+body > #l-header {
   background-color: #031b4d;
   padding: 0px 0px;
   -webkit-box-sizing: border-box;
@@ -21,7 +28,14 @@ body > header {
   color: #d5d5d5;
 }
 
-body > main {
+body > #l-header .app-title {
+  margin-top: 0px;
+  padding-top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+body > #l-main {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -29,48 +43,18 @@ body > main {
 }
 
 @media (min-width: 770px) {
-  body > main {
+  body > #l-main {
     padding: 0px 20px;
   }
 }
 
-body > footer {
-  text-align: center;
-  min-height: 50px;
-  height: auto;
-  background-color: #031b4d;
-  color: #d5d5d5;
-}
-
-body > footer a {
-  color: #d5d5d5;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-#myCanvas {
-  padding-left: 0;
-  padding-right: 0;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-h1.app-title {
-  margin-top: 0px;
-  padding-top: 20px;
-  font-size: 20px;
-  text-align: center;
-}
-
-section.main-feature {
+body > #l-main .main-feature {
   display: inline-block;
   width: calc(70vw - 20px);
   min-width: 300px;
 }
 
-section.secundary-feature {
+body > #l-main .secundary-feature {
   display: inline-block;
   float: right;
   min-width: 200px;
@@ -78,12 +62,38 @@ section.secundary-feature {
   height: 100%;
 }
 
-nav.main-menu {
+@media (max-width: 770px) {
+  body > #l-main .main-feature {
+    display: block;
+    width: 100%;
+  }
+  body > #l-main .secundary-feature {
+    display: block;
+    float: none;
+    width: 100%;
+  }
+}
+
+body > #l-footer {
+  text-align: center;
+  min-height: 50px;
+  height: auto;
+  background-color: #031b4d;
+  color: #d5d5d5;
+}
+
+body > #l-footer a {
+  color: #d5d5d5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.l-main-menu {
   padding: 0px;
   margin: 0px;
 }
 
-nav.main-menu ul {
+.l-main-menu ul {
   width: 100%;
   margin: 0px;
   clear: both;
@@ -91,20 +101,15 @@ nav.main-menu ul {
   height: 37px;
 }
 
-nav.main-menu li {
+.l-main-menu li {
   display: inline;
 }
 
-nav.main-menu li a:hover {
+.l-main-menu a:hover {
   border-bottom: 5px solid #094fe0;
 }
 
-nav.main-menu li.current a {
-  border-bottom: 5px solid #052c7e;
-  background-color: #052c7e;
-}
-
-nav.main-menu li a {
+.l-main-menu a {
   color: #d5d5d5;
   display: block;
   float: left;
@@ -112,4 +117,9 @@ nav.main-menu li a {
   padding: 0 15px;
   text-decoration: none;
 }
-/*# sourceMappingURL=main.css.map */
+
+.l-main-menu .is-current a {
+  border-bottom: 5px solid #052c7e;
+  background-color: #052c7e;
+}
+/*# sourceMappingURL=sobre.css.map */
