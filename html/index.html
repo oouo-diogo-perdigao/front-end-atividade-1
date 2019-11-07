@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>
+			Projeto PADRÕES WEB - HTML, CSS, JAVASCRIPT Atividade 3 - Jogo da Velha
+		</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" href="../img/favicon.ico" />
+
+		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="../css/normalize.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+
+		<script src="../node_modules/jquery/dist/jquery.js"></script>
+		<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+		<script src="../js/plugins.js"></script>
+		<script src="../js/table.js"></script>
+		<script src="../js/ranking.js"></script>
+		<script src="../js/main.js"></script>
+	</head>
+	<body>
+		<header id="l-header">
+			<h1 class="app-title">Jogo da Velha cheio de tecnologias</h1>
+			<nav class="l-main-menu" role="navigation">
+				<ul>
+					<li class="is-current"><a href="./index.html">Jogo</a></li>
+					<li><a href="./sobre.html">Sobre a IA</a></li>
+					<li><a href="./resources.html">Recursos Usados</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main id="l-main">
+			<section class="main-feature">
+				<canvas id="myCanvas" aria-label="Tabuleiro do jogo da Velha"></canvas>
+			</section>
+			<section class="secundary-feature">
+				<h2>Registrar recorde:</h2>
+				<form>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Email address</label>
+						<input
+							type="email"
+							class="form-control"
+							id="exampleInputEmail1"
+							aria-describedby="emailHelp"
+							placeholder="Enter email"
+						/>
+						<small id="emailHelp" class="form-text text-muted">
+							We'll never share your email with anyone else.
+						</small>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Password</label>
+						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+					</div>
+					<div class="form-group form-check">
+						<input type="checkbox" class="form-check-input" id="IA" aria-label="Ativar IA" />
+						<label class="form-check-label" for="exampleCheck1">Habilitar IA</label>
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+
+			</section>
+		</main>
+		<footer id="l-footer">
+			Jogo da velha com IA Media<br />
+			Criado por <a href="https://github.com/oouo">Diogo Perdigão</a>
+		</footer>
+	</body>
+</html>
